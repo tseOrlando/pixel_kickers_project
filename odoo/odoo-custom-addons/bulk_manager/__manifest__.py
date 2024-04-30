@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
+
 {
-    'name': "bulk_manager",
+    'name': "Bulk Manager",
 
     'summary': """
         Keep things tidy!""",
@@ -18,7 +18,7 @@
     'depends': ['base'],
 
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
     ],
@@ -26,4 +26,6 @@
     'demo': [
         'demo/demo.xml',
     ],
+    
+    'application' : True
 }

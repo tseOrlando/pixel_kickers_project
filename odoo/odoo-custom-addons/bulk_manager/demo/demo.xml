@@ -1,8 +1,7 @@
 <odoo>
     <data>
-<!--
           <record id="object0" model="bulk_manager.bulk_manager">
-            <field name="name">Object 0</field>
+            <field name="name">nig 0</field>
             <field name="value">0</field>
           </record>
 
@@ -25,6 +24,5 @@
             <field name="name">Object 4</field>
             <field name="value">40</field>
           </record>
--->
     </data>
 </odoo>
