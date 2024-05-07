@@ -3,13 +3,14 @@
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="bulk_manager.list">
-      <field name="name">bulk_manager list</field>
+      <field name="name">Bulks</field>
       <field name="model">bulk_manager.bulk_manager</field>
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="quantity" required="1"/>
+          <field name="price" required="1"/>
+          <field name="group" required="1"/>
         </tree>
       </field>
     </record>
@@ -18,7 +19,7 @@
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="bulk_manager.action_window">
-      <field name="name">bulk_manager window</field>
+      <field name="name">Bulk Items</field>
       <field name="res_model">bulk_manager.bulk_manager</field>
       <field name="view_mode">tree,form</field>
     </record>
@@ -27,7 +28,7 @@
     <!-- server action to the one above -->
 
     <record model="ir.actions.server" id="bulk_manager.action_server">
-      <field name="name">bulk_manager server</field>
+      <field name="name">Server</field>
       <field name="model_id" ref="model_bulk_manager_bulk_manager"/>
       <field name="state">code</field>
       <field name="code">
@@ -42,19 +43,11 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="bulk_manager" id="bulk_manager.menu_root"/>
+    <menuitem name="Bulk Manager" id="bulk_manager.menu_root"/>
 
     <!-- menu categories -->
 
-    <menuitem name="Menu 1" id="bulk_manager.menu_1" parent="bulk_manager.menu_root"/>
-    <menuitem name="Menu 2" id="bulk_manager.menu_2" parent="bulk_manager.menu_root"/>
-
-    <!-- actions -->
-
-    <menuitem name="List" id="bulk_manager.menu_1_list" parent="bulk_manager.menu_1"
-              action="bulk_manager.action_window"/>
-    <menuitem name="Server to list" id="bulk_manager" parent="bulk_manager.menu_2"
-              action="bulk_manager.action_server"/>
+    <menuitem name="Bulks" id="bulk_manager.groups" parent="bulk_manager.menu_root"/>
 
   </data>
 </odoo>
