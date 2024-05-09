@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
-from odoo import api, exceptions, fields, models, SUPERUSER_ID
+from odoo import models, fields
+from odoo import api, fields, models, SUPERUSER_ID
 
 class bulk_manager_groups(models.Model):
     _name = 'bulk_manager.bulk_manager_groups'
@@ -15,5 +15,6 @@ class bulk_manager(models.Model):
 
     name = fields.Char(string='Name')
     quantity = fields.Integer(string='Quantity', required=True)
-    price = fields.Monetary(string='Price', currency='EUR')
-    group = fields.Many2one('bulk_manager.bulk_manager_groups', string='Group')
+    price = fields.Integer(string='Price', currency_field='currency_id', required=True)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.ref('base.EUR').id)
+    bulk_group = fields.Many2one('bulk_manager.bulk_manager_groups', string='Bulk Group')

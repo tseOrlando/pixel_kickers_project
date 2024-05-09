@@ -8,9 +8,9 @@
       <field name="arch" type="xml">
         <tree>
           <field name="name"/>
-          <field name="quantity" required="1"/>
-          <field name="price" required="1"/>
-          <field name="group" required="1"/>
+          <field name="quantity"/>
+          <field name="price"/>
+          <field name="bulk_group" string="Bulk Group"/>
         </tree>
       </field>
     </record>
