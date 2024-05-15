@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <!-- Vista de calendario para eventos -->
+        <record id="view_calendario_evento_calendar" model="ir.ui.view">
+            <field name="name">calendario.evento.calendar</field>
+            <field name="model">calendario.evento</field>
+            <field name="arch" type="xml">
+                <calendar string="Eventos" date_start="start_date" date_stop="end_date">
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="description"/>
+                </calendar>
+            </field>
+        </record>
+
+        <!-- Acción de ventana para la vista de calendario -->
+        <record id="action_calendario_evento_calendar" model="ir.actions.act_window">
+            <field name="name">Eventos de Calendario</field>
+            <field name="res_model">calendario.evento</field>
+            <field name="view_mode">calendar,tree,form</field>
+        </record>
+
+        <!-- Elemento de menú para acceder a la vista de calendario -->
+        <menuitem id="menu_calendario" name="Calendario" sequence="30"/>
+        <menuitem id="menu_calendario_evento_calendar" name="Eventos" parent="menu_calendario" action="action_calendario_evento_calendar"/>
+    </data>
+</odoo>
