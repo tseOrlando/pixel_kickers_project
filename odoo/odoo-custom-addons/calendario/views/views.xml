@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+
+    <!-- Calendar view definition -->
+
+    <record model="ir.ui.view" id="calendario.calendar_view">
+      <field name="name">Calendario</field>
+      <field name="model">calendario.calendario</field>
+      <field name="arch" type="xml">
+        <calendar string="Calendario" date_start="name" date_stop="name" color="value">
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </calendar>
+      </field>
+    </record>
+
+
+    <!-- Action to open calendar view -->
+
+    <record model="ir.actions.act_window" id="calendario.action_calendar">
+      <field name="name">Calendario</field>
+      <field name="res_model">calendario.calendario</field>
+      <field name="view_mode">calendar,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Calendario" id="calendario.menu_root"/>
+
+    <!-- Submenu items -->
+
+    <menuitem name="Calendario" id="calendario.menu_calendar" parent="calendario.menu_root"
+              action="calendario.action_calendar"/>
+
+  </data>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_marqueting_digital_user,access_marqueting_digital_user,model_marqueting_digital_marqueting_digital,,1,1,1,1
+access_marqueting_digital_email_user,access_marqueting_digital_email_user,model_marqueting_digital_email,,1,1,1,1
