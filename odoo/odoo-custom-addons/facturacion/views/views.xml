@@ -1,80 +1,85 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
-
-    <record model="ir.ui.view" id="facturacion_venta_entradas_list_view">
-      <field name="name">facturacion_venta_entradas.list</field>
-      <field name="model">facturacion_venta_entradas.facturacion_venta_entradas</field>
+    <record model="ir.ui.view" id="ventas_facturas_list">
+      <field name="name">ventas_facturas list</field>
+      <field name="model">ventas_facturas.ventas_facturas</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="factura_numero"/>
-          <field name="cliente_id"/>
+          <field name="numero_factura"/>
+          <field name="cliente"/>
           <field name="fecha_factura"/>
-          <field name="total_euros"/>
-          <field name="estado"/>
+          <field name="precio"/>
+          <field name="estado_factura"/>
         </tree>
       </field>
     </record>
 
-    <!-- form view definition -->
-
-    <record model="ir.ui.view" id="facturacion_venta_entradas_form_view">
-      <field name="name">facturacion_venta_entradas.form</field>
-      <field name="model">facturacion_venta_entradas.facturacion_venta_entradas</field>
+    <record model="ir.ui.view" id="ventas_facturas_form">
+      <field name="name">ventas_facturas form</field>
+      <field name="model">ventas_facturas.ventas_facturas</field>
       <field name="arch" type="xml">
         <form>
           <sheet>
             <group>
-              <field name="factura_numero"/>
-              <field name="cliente_id"/>
+              <field name="numero_factura"/>
+              <field name="cliente"/>
               <field name="fecha_factura"/>
-              <field name="total_euros"/>
-              <field name="estado"/>
+              <field name="precio"/>
+              <field name="estado_factura"/>
             </group>
           </sheet>
         </form>
       </field>
     </record>
 
-    <!-- actions opening views on models -->
-
-    <record model="ir.actions.act_window" id="facturacion_venta_entradas_action">
-      <field name="name">Facturación Ventas</field>
-      <field name="res_model">facturacion_venta_entradas.facturacion_venta_entradas</field>
+    <record model="ir.actions.act_window" id="ventas_facturas_action_window">
+      <field name="name">Invoice</field>
+      <field name="res_model">ventas_facturas.ventas_facturas</field>
       <field name="view_mode">tree,form</field>
-      <field name="view_id" ref="facturacion_venta_entradas_list_view"/>
     </record>
 
-    <!-- server action to the one above -->
-
-    <record model="ir.actions.server" id="facturacion_venta_entradas_server_action">
-      <field name="name">Facturación Ventas Server Action</field>
-      <field name="model_id" ref="model_facturacion_venta_entradas_facturacion_venta_entradas"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+    <record model="ir.ui.view" id="view_clientes_list">
+      <field name="name">Clientes List</field>
+      <field name="model">clientes.cliente</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="last_name"/>
+          <field name="company_name"/>
+          <field name="mobile"/>
+          <field name="category_id"/>
+        </tree>
       </field>
     </record>
 
-    <!-- Top menu item -->
+    <record model="ir.ui.view" id="view_clientes_form">
+      <field name="name">Clientes Form</field>
+      <field name="model">clientes.cliente</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="name"/>
+              <field name="last_name"/>
+              <field name="company_name"/>
+              <field name="mobile"/>
+              <field name="category_id"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
 
-    <menuitem name="Facturación Ventas" id="facturacion_venta_entradas_menu_root"/>
+    <record model="ir.actions.act_window" id="action_clientes">
+      <field name="name">Clientes</field>
+      <field name="res_model">clientes.cliente</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="view_clientes_list"/>
+    </record>
+    <menuitem name="Facturación" id="ventas_facturas_menu_root"/>
 
-    <!-- menu categories -->
+    <menuitem name="Invoicing" id="ventas_facturas_menu_ventas" parent="ventas_facturas_menu_root" action="ventas_facturas_action_window"/>
 
-    <menuitem name="Menu 1" id="facturacion_venta_entradas_menu_1" parent="facturacion_venta_entradas_menu_root"/>
-    <menuitem name="Menu 2" id="facturacion_venta_entradas_menu_2" parent="facturacion_venta_entradas_menu_root"/>
-
-    <!-- actions -->
-
-    <menuitem name="List" id="facturacion_venta_entradas_menu_1_list" parent="facturacion_venta_entradas_menu_1"
-              action="facturacion_venta_entradas_action"/>
-    <menuitem name="Server to list" id="facturacion_venta_entradas_menu_2_server" parent="facturacion_venta_entradas_menu_2"
-              action="facturacion_venta_entradas_server_action"/>
-
+    <menuitem name="Customers" id="ventas_facturas_menu_clientes" parent="ventas_facturas_menu_root" action="action_clientes"/>
   </data>
 </odoo>
