@@ -1,34 +1,55 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="facturacion.list">
-      <field name="name">facturacion list</field>
-      <field name="model">facturacion.facturacion</field>
+
+    <record model="ir.ui.view" id="facturacion_venta_entradas_list_view">
+      <field name="name">facturacion_venta_entradas.list</field>
+      <field name="model">facturacion_venta_entradas.facturacion_venta_entradas</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="factura_numero"/>
+          <field name="cliente_id"/>
+          <field name="fecha_factura"/>
+          <field name="total_euros"/>
+          <field name="estado"/>
         </tree>
       </field>
     </record>
--->
+
+    <!-- form view definition -->
+
+    <record model="ir.ui.view" id="facturacion_venta_entradas_form_view">
+      <field name="name">facturacion_venta_entradas.form</field>
+      <field name="model">facturacion_venta_entradas.facturacion_venta_entradas</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group>
+              <field name="factura_numero"/>
+              <field name="cliente_id"/>
+              <field name="fecha_factura"/>
+              <field name="total_euros"/>
+              <field name="estado"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="facturacion.action_window">
-      <field name="name">facturacion window</field>
-      <field name="res_model">facturacion.facturacion</field>
+
+    <record model="ir.actions.act_window" id="facturacion_venta_entradas_action">
+      <field name="name">Facturación Ventas</field>
+      <field name="res_model">facturacion_venta_entradas.facturacion_venta_entradas</field>
       <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="facturacion_venta_entradas_list_view"/>
     </record>
--->
 
     <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="facturacion.action_server">
-      <field name="name">facturacion server</field>
-      <field name="model_id" ref="model_facturacion_facturacion"/>
+
+    <record model="ir.actions.server" id="facturacion_venta_entradas_server_action">
+      <field name="name">Facturación Ventas Server Action</field>
+      <field name="model_id" ref="model_facturacion_venta_entradas_facturacion_venta_entradas"/>
       <field name="state">code</field>
       <field name="code">
         action = {
@@ -38,23 +59,22 @@
         }
       </field>
     </record>
--->
 
     <!-- Top menu item -->
-<!--
-    <menuitem name="facturacion" id="facturacion.menu_root"/>
--->
+
+    <menuitem name="Facturación Ventas" id="facturacion_venta_entradas_menu_root"/>
+
     <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="facturacion.menu_1" parent="facturacion.menu_root"/>
-    <menuitem name="Menu 2" id="facturacion.menu_2" parent="facturacion.menu_root"/>
--->
+
+    <menuitem name="Menu 1" id="facturacion_venta_entradas_menu_1" parent="facturacion_venta_entradas_menu_root"/>
+    <menuitem name="Menu 2" id="facturacion_venta_entradas_menu_2" parent="facturacion_venta_entradas_menu_root"/>
+
     <!-- actions -->
-<!--
-    <menuitem name="List" id="facturacion.menu_1_list" parent="facturacion.menu_1"
-              action="facturacion.action_window"/>
-    <menuitem name="Server to list" id="facturacion" parent="facturacion.menu_2"
-              action="facturacion.action_server"/>
--->
+
+    <menuitem name="List" id="facturacion_venta_entradas_menu_1_list" parent="facturacion_venta_entradas_menu_1"
+              action="facturacion_venta_entradas_action"/>
+    <menuitem name="Server to list" id="facturacion_venta_entradas_menu_2_server" parent="facturacion_venta_entradas_menu_2"
+              action="facturacion_venta_entradas_server_action"/>
+
   </data>
 </odoo>
