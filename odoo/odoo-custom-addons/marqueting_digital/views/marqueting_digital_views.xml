@@ -7,8 +7,7 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
-                    <field name="value"/>
-                    <field name="value2"/>
+                    <field name="subject"/>
                 </tree>
             </field>
         </record>
@@ -22,48 +21,7 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="value"/>
-                            <field name="value2"/>
-                            <field name="description"/>
-                        </group>
-                        <notebook>
-                            <page string="Emails">
-                                <field name="email_ids">
-                                    <tree>
-                                        <field name="date"/>
-                                        <field name="subject"/>
-                                        <field name="sender"/>
-                                    </tree>
-                                    <form>
-                                        <group>
-                                            <field name="date"/>
-                                            <field name="subject"/>
-                                            <field name="sender"/>
-                                            <field name="content"/>
-                                            <field name="recipient"/>
-                                        </group>
-                                    </form>
-                                </field>
-                            </page>
-                        </notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-        <!-- Vista de formulario para Email -->
-        <record id="view_email_form" model="ir.ui.view">
-            <field name="name">email.form</field>
-            <field name="model">marqueting_digital.email</field>
-            <field name="arch" type="xml">
-                <form string="Email">
-                    <sheet>
-                        <group>
-                            <field name="date"/>
                             <field name="subject"/>
-                            <field name="sender"/>
-                            <field name="content"/>
-                            <field name="recipient"/>
                         </group>
                     </sheet>
                 </form>
@@ -81,7 +39,7 @@
         <menuitem name="Marqueting Digital" id="marqueting_digital_menu_root"/>
 
         <!-- Submenú para los registros de Marqueting Digital -->
-        <menuitem name="Emails" id="marqueting_digital_menu_emails" parent="marqueting_digital_menu_root"
+        <menuitem name="Registros" id="marqueting_digital_menu_registros" parent="marqueting_digital_menu_root"
                   action="marqueting_digital_action_window"/>
     </data>
 </odoo>
