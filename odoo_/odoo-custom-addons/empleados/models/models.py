@@ -1,18 +1,12 @@
-# -*- coding: utf-8 -*-
+# models/employee.py
+from odoo import models, fields
 
-# from odoo import models, fields, api
+class Employee(models.Model):
+    _name = 'employee.management'
+    _description = 'Employee Management'
 
-
-# class empleados(models.Model):
-#     _name = 'empleados.empleados'
-#     _description = 'empleados.empleados'
-
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+    name = fields.Char(string='Name', required=True)
+    age = fields.Integer(string='Age')
+    job_title = fields.Char(string='Job Title')
+    department = fields.Char(string='Department')
+    image = fields.Binary(string='Image')

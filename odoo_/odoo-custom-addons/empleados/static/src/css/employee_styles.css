@@ -1,0 +1,7 @@
+.oe_employee_image {
+    max-width: 150px; /* Ajusta este valor según tus necesidades */
+    max-height: 150px; /* Ajusta este valor según tus necesidades */
+    display: block; /* Necesario para el centrado */
+    margin-left: auto; /* Necesario para el centrado */
+    margin-right: auto; /* Necesario para el centrado */
+}
