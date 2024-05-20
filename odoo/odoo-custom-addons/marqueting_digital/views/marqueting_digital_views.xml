@@ -1,18 +1,18 @@
 <odoo>
     <data>
-        <!-- Vista de lista para Marqueting Digital -->
         <record model="ir.ui.view" id="marqueting_digital_list_view">
             <field name="name">marqueting.digital.list</field>
             <field name="model">marqueting_digital.marqueting_digital</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="name"/>
-                    <field name="subject"/>
+                    <field name="name" widget="date"/>
+                    <field name="value"/>
+                    <field name="value2"/>
+                    <field name="value3"/>
                 </tree>
             </field>
         </record>
 
-        <!-- Vista de formulario para Marqueting Digital -->
         <record model="ir.ui.view" id="marqueting_digital_form_view">
             <field name="name">marqueting.digital.form</field>
             <field name="model">marqueting_digital.marqueting_digital</field>
@@ -21,25 +21,35 @@
                     <sheet>
                         <group>
                             <field name="name"/>
-                            <field name="subject"/>
+                            <field name="value"/>
+                            <field name="value2"/>
+                            <field name="value3"/>
+                            <field name="description"/>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
 
-        <!-- Acción para abrir la vista de lista -->
         <record model="ir.actions.act_window" id="marqueting_digital_action_window">
             <field name="name">Marqueting Digital</field>
             <field name="res_model">marqueting_digital.marqueting_digital</field>
             <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="marqueting_digital_list_view"/>
         </record>
 
-        <!-- Menú principal -->
+        <record model="ir.actions.act_window" id="marqueting_digital_emails_action_window">
+            <field name="name">Emails</field>
+            <field name="res_model">marqueting_digital.email</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
         <menuitem name="Marqueting Digital" id="marqueting_digital_menu_root"/>
 
-        <!-- Submenú para los registros de Marqueting Digital -->
-        <menuitem name="Registros" id="marqueting_digital_menu_registros" parent="marqueting_digital_menu_root"
+        <menuitem name="Emails" id="marqueting_digital_menu_emails" parent="marqueting_digital_menu_root"
                   action="marqueting_digital_action_window"/>
+
+        <menuitem name="List" id="marqueting_digital_menu_lsit" parent="marqueting_digital_menu_root"
+                  action="marqueting_digital_emails_action_window"/>
     </data>
 </odoo>
