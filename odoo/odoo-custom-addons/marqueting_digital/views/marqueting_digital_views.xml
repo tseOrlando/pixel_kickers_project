@@ -31,17 +31,79 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="mailing_list_tree_view">
+            <field name="name">mailing.list.tree</field>
+            <field name="model">marqueting_digital.mailing_list</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="email_count"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="mailing_list_form_view">
+            <field name="name">mailing.list.form</field>
+            <field name="model">marqueting_digital.mailing_list</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="emails">
+                                <tree editable="bottom">
+                                    <field name="recipient"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="email_list_view">
+            <field name="name">email.list.view</field>
+            <field name="model">marqueting_digital.email</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="subject"/>
+                    <field name="sender"/>
+                    <field name="recipient"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="email_form_view">
+            <field name="name">email.form.view</field>
+            <field name="model">marqueting_digital.email</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="subject"/>
+                            <field name="content"/>
+                            <field name="recipient"/>
+                            <field name="mailing_list_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record model="ir.actions.act_window" id="marqueting_digital_action_window">
-            <field name="name">Marqueting Digital</field>
+            <field name="name">Emails</field>
             <field name="res_model">marqueting_digital.marqueting_digital</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="marqueting_digital_list_view"/>
         </record>
 
-        <record model="ir.actions.act_window" id="marqueting_digital_emails_action_window">
-            <field name="name">Emails</field>
-            <field name="res_model">marqueting_digital.email</field>
+        <record model="ir.actions.act_window" id="mailing_list_action_window">
+            <field name="name">Lists</field>
+            <field name="res_model">marqueting_digital.mailing_list</field>
             <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="mailing_list_tree_view"/>
         </record>
 
         <menuitem name="Marqueting Digital" id="marqueting_digital_menu_root"/>
@@ -49,7 +111,7 @@
         <menuitem name="Emails" id="marqueting_digital_menu_emails" parent="marqueting_digital_menu_root"
                   action="marqueting_digital_action_window"/>
 
-        <menuitem name="List" id="marqueting_digital_menu_lsit" parent="marqueting_digital_menu_root"
-                  action="marqueting_digital_emails_action_window"/>
+        <menuitem name="List" id="marqueting_digital_menu_list" parent="marqueting_digital_menu_root"
+                  action="mailing_list_action_window"/>
     </data>
 </odoo>
