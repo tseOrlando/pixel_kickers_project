@@ -1,53 +1,71 @@
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-
-    <record model="ir.ui.view" id="bulk_manager.list">
-      <field name="name">Bulks</field>
-      <field name="model">bulk_manager.bulk_manager</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="quantity"/>
-          <field name="price"/>
-          <field name="bulk_group" string="Bulk Group"/>
-        </tree>
-      </field>
+    <record id="view_bulk_manager_groups_tree" model="ir.ui.view">
+        <field name="name">bulk_manager.groups.tree</field>
+        <field name="model">bulk_manager.bulk_manager_groups</field>
+        <field name="arch" type="xml">
+            <tree>
+              <field name="name"/>
+            </tree>
+        </field>
     </record>
 
-
-    <!-- actions opening views on models -->
-
-    <record model="ir.actions.act_window" id="bulk_manager.action_window">
-      <field name="name">Bulk Items</field>
-      <field name="res_model">bulk_manager.bulk_manager</field>
-      <field name="view_mode">tree,form</field>
+    <record id="view_bulk_manager_groups_form" model="ir.ui.view">
+        <field name="name">bulk_manager.groups.form</field>
+        <field name="model">bulk_manager.bulk_manager_groups</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                    <group>
+                        <field name="product_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="quantity"/>
+                                <field name="price"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group>
+                                      <field name="name"/>
+                                      <field name="quantity"/>
+                                      <field name="price"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
     </record>
 
-
-    <!-- server action to the one above -->
-
-    <record model="ir.actions.server" id="bulk_manager.action_server">
-      <field name="name">Server</field>
-      <field name="model_id" ref="model_bulk_manager_bulk_manager"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
+    <record id="view_bulk_manager_product_form" model="ir.ui.view">
+        <field name="name">bulk_manager.product.form</field>
+        <field name="model">bulk_manager.bulk_manager_product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="quantity"/>
+                        <field name="price"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
     </record>
 
+    <record id="action_bulk_manager_groups" model="ir.actions.act_window">
+        <field name="name">Bulk Manager Groups</field>
+        <field name="res_model">bulk_manager.bulk_manager_groups</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-    <!-- Top menu item -->
+    <menuitem id="menu_bulk_manager_root" name="Bulk Manager"/>
 
-    <menuitem name="Bulk Manager" id="bulk_manager.menu_root"/>
-
-    <!-- menu categories -->
-
-    <menuitem name="Bulks" id="bulk_manager.groups" parent="bulk_manager.menu_root"/>
-
-  </data>
+    <menuitem id="menu_bulk_manager_groups" name="Groups"
+              parent="menu_bulk_manager_root"
+              action="action_bulk_manager_groups"/>
 </odoo>
