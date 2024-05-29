@@ -1,2 +1,2 @@
 # Captura base de dades:
-![CapturaBaseDeDatos](Captura.png)
+![CapturaBaseDeDatos](Captura.PNG)
